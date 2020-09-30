@@ -1,10 +1,14 @@
-#include <stdio.h>
-#include <pcap.h>
+#include <iostream>
+#include "sniffer.h"
+
+void cb(const uint8_t * p)
+{
+    std::cout << "gay!" << std::endl;
+}
 
 int main(int argc, char *argv[])
 {
-    char *dev = argv[1];
-
-    printf("Device: %s\n", dev);
+    sniffer s = sniffer(&cb);
+    s.start();
     return (0);
 }
